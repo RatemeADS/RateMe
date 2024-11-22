@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Review - <%= categoria.title %></title>
+  <link rel="stylesheet" href="/add-review.css">
+</head>
+<body>
+  <h1>Adicionar Review para a Categoria: <%= categoria.title %></h1>
+
+  <form action="/submit-review/<%= categoria.id %>" method="POST">
+    <div>
+      <label for="titulo">Título da Review:</label>
+      <input type="text" id="titulo" name="titulo" required>
+    </div>
+    
+    <div>
+      <label for="comentario">Comentário:</label>
+      <textarea id="comentario" name="comentario" required></textarea>
+    </div>
+    
+    <div>
+      <label for="sugestao">Sugestão:</label>
+      <input type="text" id="sugestao" name="sugestao" required>
+    </div>
+
+    <button type="submit">Enviar Review</button>
+  </form>
+
+  <script src="/idleTimeout.js"></script>
+</body>
+</html>

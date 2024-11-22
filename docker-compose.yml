@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword  # Senha para o root
+      MYSQL_DATABASE: avaliacoes_db       # Nome do banco de dados
+      MYSQL_USER: usuario                # Usuário do banco
+      MYSQL_PASSWORD: senhausuario       # Senha do usuário
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge

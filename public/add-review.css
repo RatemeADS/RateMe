@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e5e5e5;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 10px;
+    min-height: 100vh;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  div {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+  
+  button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+  }
+  
+  a {
+    text-decoration: none;
+    margin-top: 30px;
+  }
+  
+  a button {
+    background-color: #2ecc71;
+  }
+  
+  a button:hover {
+    background-color: #27ae60;
+  }
+  
+  a button:disabled {
+    background-color: #bdc3c7;
+  }
+  
+  .add-review-btn:hover {
+    background-color: #27ae60;
+  }
+  
+  @media (max-width: 768px) {
+    body {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    form {
+      padding: 20px;
+    }
+  
+    label {
+      font-size: 1rem;
+    }
+  
+    input,
+    textarea {
+      font-size: 1rem;
+      padding: 10px;
+    }
+  
+    button {
+      font-size: 0.9rem;
+      padding: 10px 18px;
+    }
+  
+    .add-review-btn {
+      padding: 12px 25px;
+      font-size: 1rem;
+    }
+  }
+  

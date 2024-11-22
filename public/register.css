@@ -1,0 +1,131 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    text-align: center; 
+}
+
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #000000;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #4A90E2;
+    outline: none;
+}
+
+#senha-feedback {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+#senha-feedback ul {
+    list-style: none;
+    padding: 0;
+}
+
+#senha-feedback li {
+    color: #f00;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+#senha-feedback li.valid {
+    color: #2ecc71;
+}
+
+#senha-feedback li.invalid {
+    color: #e74c3c;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4A90E2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #357ABD;
+}
+
+form p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+form a {
+    text-decoration: none;
+    color: #4A90E2;
+}
+
+form a button {
+    background-color: #fff;
+    border: 1px solid #4A90E2;
+    color: #4A90E2;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+form a button:hover {
+    background-color: #f1f1f1;
+}
+

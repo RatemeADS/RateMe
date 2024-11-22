@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar</title>
+    <link rel="stylesheet" href="/register.css">
+</head>
+<body>
+    <form action="/register" method="POST" id="register-form">
+        <h1>Registrar</h1>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+        
+        <label for="senha">Senha</label>
+        <div class="input-container">
+            <input type="password" id="senha" name="senha" required>
+        </div>
+        <br>
+
+        <label for="confirm-senha">Confirmar Senha</label>
+        <div class="input-container">
+            <input type="password" id="confirm-senha" name="confirm-senha" required>
+            <button type="button" id="toggle-senha">👁️</button>
+        </div>
+        <br><br>
+
+        <div id="senha-feedback">
+            <ul>
+                <li id="senha-length" class="invalid">Mínimo de 8 caracteres</li>
+                <li id="senha-letter" class="invalid">Deve conter letras</li>
+                <li id="senha-number" class="invalid">Deve conter números</li>
+            </ul>
+        </div>
+
+        <br><br>
+
+        <button type="submit">Registrar</button>
+        <br><br>
+        Já tem uma conta? 
+        <a href="/login"><button type="button">Fazer login</button></a>
+    </form>
+
+    <script src="/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo</title>
+  <link rel="stylesheet" href="/adm.css">
+</head>
+<body>
+  <h1>Painel Administrativo</h1>
+
+  <div class="sql-form-container">
+    <form id="sql-form">
+      <label for="sqlCommand">Insira o comando SQL:</label>
+      <textarea id="sqlCommand" name="sqlCommand" rows="4" required></textarea>
+      <button type="submit">Executar</button>
+    </form>
+  </div>
+  <div id="button-container">
+    <button id="alterarIsAdminBtn">Alterar padrão de Admin para FALSE</button>
+    <button id="alterarIsAdminBtn2">Alterar padrão de Admin para TRUE</button>
+  </div>
+  <h2>Usuários</h2>
+  <table id="usuarios-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Admin</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <h2>Avaliações</h2>
+  <label for="order-by-priority">Ordenar por prioridade:</label>
+  <select id="order-by-priority">
+    <option value="asc">Ascendente</option>
+    <option value="desc">Descendente</option>
+  </select>
+  
+  <label for="order-by-status">Filtrar por status:</label>
+  <select id="order-by-status">
+    <option value="">Nenhum</option> 
+    <option value="pendente">Pendente</option>
+    <option value="analisado">Analisado</option>
+    <option value="em progresso">Em Progresso</option>
+    <option value="implementado">Implementado</option>
+  </select>
+
+  <table id="reviews-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Categoria</th>
+        <th>Título</th>
+        <th>Comentário</th>
+        <th>Prioridade</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <% reviews.forEach(function(review) { %>
+        <tr>
+          <td><%= review.id %></td>
+          <td><%= review.categoria_nome %></td> 
+          <td><%= review.titulo %></td>
+          <td><%= review.comentario %></td>
+          <td><%= review.priority %></td>
+          <td>
+            <select class="status-select" data-review-id="<%= review.id %>">
+              <option value="pendente" <%= review.status === 'pendente' ? 'selected' : '' %>>Pendente</option>
+              <option value="analisado" <%= review.status === 'analisado' ? 'selected' : '' %>>Analisado</option>
+              <option value="em progresso" <%= review.status === 'em progresso' ? 'selected' : '' %>>Em Progresso</option>
+              <option value="implementado" <%= review.status === 'implementado' ? 'selected' : '' %>>Implementado</option>
+            </select>
+          </td>
+          <td>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+
+  <div id="result"></div>
+
+  <script src="/adm.js"></script>
+  <script src="/idleTimeout.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= categoria.title %> - Avaliações</title>
+  <link rel="stylesheet" href="/category-detail.css">
+</head>
+<body>
+  <h1><%= categoria.title %></h1>
+  <% if (user) { %>
+    <a href="/logout"><button>Sair</button></a>
+<% } %>
+
+  <ul id="reviews-list">
+    <% if (reviews && reviews.length > 0) { %>
+      <% reviews.forEach(review => { %>
+        <li id="review-<%= review.id %>">
+          <h3><%= review.titulo %></h3>
+          <p><%= review.comentario %></p>
+          <p><strong>Por: </strong><%= review.username %></p>
+          <p><strong>Sugestão: </strong><%= review.sugestao %></p>
+          <p><strong>Status: </strong><%= review.status %></p>
+          <p><strong>Prioridade: </strong><span class="priority"><%= review.priority %></span></p>
+          <p><strong>Data e Hora: </strong><%= review.data_criacao.toLocaleString() %></p>
+
+          <!-- Seção de Votos -->
+          <p>
+            <span id="upvotes-<%= review.id %>"><%= review.upvotes || 0 %></span> 👍 |
+            <span id="downvotes-<%= review.id %>"><%= review.downvotes || 0 %></span> 👎
+          </p>
+
+          <% if (user) { %>
+            <!-- Botões de voto para usuários logados -->
+            <button class="vote-btn" data-review-id="<%= review.id %>" data-vote-type="up">👍 Votar Positivo</button>
+            <button class="vote-btn" data-review-id="<%= review.id %>" data-vote-type="down">👎 Votar Negativo</button>
+          <% }%>
+
+          <% if (user && user.is_admin) { %>
+            <!-- Atualizar o status da avaliação -->
+            <label for="status-<%= review.id %>">Atualizar Status:</label>
+            <select id="status-<%= review.id %>" data-review-id="<%= review.id %>">
+              <option value="pendente" <%= review.status === 'pendente' ? 'selected' : '' %>>Pendente</option>
+              <option value="analisado" <%= review.status === 'analisado' ? 'selected' : '' %>>Analisado</option>
+              <option value="em progresso" <%= review.status === 'em progresso' ? 'selected' : '' %>>Em Progresso</option>
+              <option value="implementado" <%= review.status === 'implementado' ? 'selected' : '' %>>Implementado</option>
+            </select>
+            
+            <!-- Atualizar a prioridade -->
+            <label for="priority-<%= review.id %>">Atualizar Prioridade:</label>
+            <select id="priority-<%= review.id %>" data-review-id="<%= review.id %>">
+              <option value="Alta" <%= review.prioridade === 'Alta' ? 'selected' : '' %>>Alta</option>
+              <option value="Média" <%= review.prioridade === 'Média' ? 'selected' : '' %>>Média</option>
+              <option value="Baixa" <%= review.prioridade === 'Baixa' ? 'selected' : '' %>>Baixa</option>
+            </select>
+            
+            <button class="update-status-btn" data-review-id="<%= review.id %>">Atualizar Status</button>
+            <button class="update-priority-btn" data-review-id="<%= review.id %>">Atualizar Prioridade</button>
+            <button class="delete-review-btn" data-review-id="<%= review.id %>" data-categoria-id="<%= categoria.id %>">Excluir Avaliação</button>
+          <% } %>
+        </li>
+      <% }); %>
+    <% } else { %>
+      <p>Não há avaliações para esta categoria.</p>
+    <% } %>
+  </ul>
+
+  <a href="/add-review/<%= categoria.id %>"><button class="add-review-btn">Adicionar Avaliação</button></a>
+
+  <script src="/idleTimeout.js"></script>
+  <script src="/category-detail.js"></script>
+</body>
+</html>

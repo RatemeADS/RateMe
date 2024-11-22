@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+
+  <div>
+    <% if (!user) { %> <!-- Se não houver usuário logado -->
+      <a href="/login"><button>Login</button></a>
+      <a href="/register"><button>Registrar</button></a>
+    <% } else { %> <!-- Se o usuário estiver logado -->
+      <a href="/logout"><button>Sair</button></a>
+      <% if (user.is_admin) { %> <!-- Se o usuário for administrador -->
+        <a href="/admin"><button>Área Administrativa</button></a>
+      <% } %>
+    <% } %>
+  </div>
+
+  <h1>Página de categorias</h1>
+  
+  <ul>
+    <% if (categorias && categorias.length > 0) { %>
+      <% categorias.forEach(categoria => { %>
+        <li>
+          <a href="/category/<%= categoria.id %>">
+            <div class="categoria-box">
+              <p><%= categoria.title %></p>
+            </div>
+          </a>
+          <% if (user && user.is_admin) { %> 
+            <form action="/delete-category/<%= categoria.id %>" method="POST" style="display:inline;">
+              <button type="submit" onclick="return confirm('Tem certeza que deseja deletar esta categoria?')">Deletar</button>
+            </form>
+          <% } %>
+        </li>
+      <% }); %>
+    <% } else { %>
+      <p>Não há categorias disponíveis no momento.</p>
+    <% } %>
+  </ul>
+  
+
+
+  <% if (user && user.is_admin) { %> 
+    <div class="form-container">
+      <h2>Adicionar Nova Categoria</h2>
+      <form action="/add-category" method="POST" onsubmit="return checkDuplicateCategory()">
+        <label for="title">Título da Categoria:</label>
+        <input type="text" id="title" name="title" required>
+        <button type="submit">Adicionar Categoria</button>
+      </form>
+    </div>
+  <% } %>
+
+  <script src="/idleTimeout.js"></script>
+  <script src="/index.js"></script>
+</body>
+</html>
